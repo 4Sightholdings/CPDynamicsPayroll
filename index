@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+
+<form id="form_aa56681b6093423a85267eda61de2f4a"
+      method="post"
+      action="https://partners.4sight.cloud/public/externalform2.ashx"
+      onsubmit="return validateform();">
+
+    <div id="divapicontainer_aa56681b6093423a85267eda61de2f4a">
+        <div id="divapi_aa56681b6093423a85267eda61de2f4a">
+            <script src="https://www.google.com/recaptcha/api.js"></script>
+        </div>
+    </div>
+
+    <script src="https://partners.4sight.cloud/track/d5vhql2k7toni/gr52o9i4xazl/webpl.js"></script>
+
+    <script>
+        function submitForm() {
+            document.getElementById("form_aa56681b6093423a85267eda61de2f4a").submit();
+        }
+
+        function validateform() {
+            return true;
+        }
+    </script>
+
+    <script src="https://cache.amp.vg/partners.4sight.cloud/bundles/3812a497290124bd527f170a34b95e1831475fee/en/jquery-updated.js"></script>
+
+    <!-- Hidden Fields -->
+    <input type="hidden" id="token_aa56681b6093423a85267eda61de2f4a" name="tokenkey" value="">
+    <input type="hidden" name="templateid" id="templateid" value="1085">
+    <input type="hidden" name="formid" id="formid" value="1052">
+    <input type="hidden" name="doubleopt" id="doubleopt" value="0">
+    <input type="hidden" name="successurl" id="successurl" value="https://partners.4sight.cloud">
+    <input type="hidden" name="failureurl" id="failureurl" value="https://partners.4sight.cloud">
+
+    <!-- CAPTCHA -->
+    <div id="captcha_aa56681b6093423a85267eda61de2f4a" style="display:none;">
+
+        <div id="divReCaptchaaa56681b6093423a85267eda61de2f4a"
+             class="g-recaptcha"
+             data-sitekey="6LeQHR4UAAAAALnbi_6DE8IEoKMjYnZk3IawV-5t">
+        </div>
+
+        <div id="divInvisibleCaptchaaa56681b6093423a85267eda61de2f4a"
+             class="g-recaptcha"
+             data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU"
+             data-callback="submitForm"
+             data-size="invisible"
+             data-bind="submit_aa56681b6093423a85267eda61de2f4a">
+        </div>
+
+    </div>
+
+    <!-- Form -->
+    <table style="width:100px; height:100px;">
+
+        <tr>
+            <td>First Name</td>
+            <td>
+                <input type="text"
+                       class="ampfield"
+                       id="FirstName"
+                       name="FirstName"
+                       dbfieldid="FirstName">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Last Name</td>
+            <td>
+                <input type="text"
+                       class="ampfield"
+                       id="LastName"
+                       name="LastName"
+                       dbfieldid="LastName">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="text"
+                       class="ampfield"
+                       id="Email"
+                       name="Email"
+                       dbfieldid="Email">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Company</td>
+            <td>
+                <input type="text"
+                       class="ampfield"
+                       id="ContactCompany"
+                       name="ContactCompany"
+                       dbfieldid="ContactCompany">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Where did you hear about us?</td>
+            <td>
+                <select class="ampfield"
+                        id="Wheredidyouhearaboutus"
+                        name="Wheredidyouhearaboutus"
+                        dbfieldid="Wheredidyouhearaboutus">
+
+                    <option value="">Where did you hear about us?</option>
+                    <option>Bing</option>
+                    <option>ChatGPT/AI</option>
+                    <option>Email</option>
+                    <option>Google</option>
+                    <option>Social Media</option>
+                    <option>Word of Mouth</option>
+
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="button"
+                       id="submit_aa56681b6093423a85267eda61de2f4a"
+                       value="Submit"
+                       class="g-recaptcha"
+                       data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU">
+            </td>
+        </tr>
+
+    </table>
+
+    <script src="https://partners.4sight.cloud/public/externalform2.ashx?formKey=aa56681b6093423a85267eda61de2f4a"
+            async
+            defer>
+    </script>
+
+</form>
+
+</body>
+</html>
