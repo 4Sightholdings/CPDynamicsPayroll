@@ -1,147 +1,361 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Sight | Get in Touch</title>
+
+    <style>
+        /* ===== 4Sight Brand Palette ===== */
+        :root {
+            --brand-royal:   #2563EB;   /* Royal Blue  */
+            --brand-sky:     #6AC0EC;   /* Sky Blue    */
+            --brand-navy:    #0B2C5E;   /* Madison     */
+            --brand-accent:  #6AC0EC;
+            --field-border:  #d6deec;
+            --field-focus:   #2563EB;
+            --text-dark:     #0B2C5E;
+            --text-muted:    #5b6b85;
+            --success-bg:    #e8f6ee;
+            --success-brd:   #2e9e5b;
+            --success-txt:   #1c6b3c;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", "Segoe", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #eef4ff 0%, #e6f3fb 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        /* ===== Centering wrapper ===== */
+        .page-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 32px 16px;
+        }
+
+        /* ===== Card ===== */
+        .form-card {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 18px 45px rgba(11, 44, 94, 0.15);
+            overflow: hidden;
+            animation: rise 0.5s ease;
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Header ===== */
+        .form-header {
+            background: linear-gradient(120deg, var(--brand-navy) 0%, var(--brand-royal) 60%, var(--brand-sky) 130%);
+            color: #ffffff;
+            padding: 30px 34px 26px;
+            text-align: center;
+        }
+        .form-header h1 {
+            margin: 0 0 6px;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+        .form-header p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* ===== Body ===== */
+        .form-body { padding: 30px 34px 36px; }
+
+        .field-group { margin-bottom: 20px; }
+
+        .field-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 7px;
+        }
+
+        .ampfield {
+            width: 100%;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--text-dark);
+            background: #fbfcfe;
+            border: 1.5px solid var(--field-border);
+            border-radius: 9px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            outline: none;
+        }
+        .ampfield::placeholder { color: #9aa8bf; }
+
+        .ampfield:hover { border-color: #b7c6de; }
+
+        .ampfield:focus {
+            border-color: var(--field-focus);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        select.ampfield {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        /* ===== Interactive Submit Button ===== */
+        .submit-btn {
+            width: 100%;
+            padding: 14px 20px;
+            margin-top: 6px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(120deg, var(--brand-royal) 0%, var(--brand-sky) 100%);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+            transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+        .submit-btn:hover {
+            filter: brightness(1.06);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.38);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.3);
+        }
+        .submit-btn:focus-visible {
+            outline: 3px solid rgba(106, 192, 236, 0.6);
+            outline-offset: 2px;
+        }
+
+        /* ===== reCAPTCHA spacing ===== */
+        #captcha_aa56681b6093423a85267eda61de2f4a { margin-bottom: 18px; }
+        .g-recaptcha > div { margin: 0 auto; }
+
+        /* ===== Success Confirmation ===== */
+        .success-panel {
+            display: none;
+            text-align: center;
+            padding: 40px 34px 46px;
+            animation: rise 0.4s ease;
+        }
+        .success-panel .check-circle {
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: var(--success-bg);
+            border: 2px solid var(--success-brd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .success-panel .check-circle svg {
+            width: 38px;
+            height: 38px;
+            stroke: var(--success-brd);
+        }
+        .success-panel h2 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            color: var(--brand-navy);
+        }
+        .success-panel p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .form-footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 0 34px 22px;
+        }
+
+        @media (max-width: 520px) {
+            .form-header, .form-body { padding-left: 22px; padding-right: 22px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<form id="form_aa56681b6093423a85267eda61de2f4a"
-      method="post"
-      action="https://partners.4sight.cloud/public/externalform2.ashx"
-      onsubmit="return validateform();">
+<div class="page-wrap">
+    <div class="form-card">
 
-    <div id="divapicontainer_aa56681b6093423a85267eda61de2f4a">
-        <div id="divapi_aa56681b6093423a85267eda61de2f4a">
-            <script src="https://www.google.com/recaptcha/api.js"></script>
+        <!-- ===== Header ===== -->
+        <div class="form-header">
+            <h1>Get in Touch</h1>
+            <p>Tell us a little about you and we'll be in contact shortly.</p>
         </div>
+
+        <!-- ===== The Form ===== -->
+        <form id="form_aa56681b6093423a85267eda61de2f4a"
+              method="post"
+              action="https://partners.4sight.cloud/public/externalform2.ashx"
+              onsubmit="return validateform();">
+
+            <div class="form-body" id="formBody_aa56681b6093423a85267eda61de2f4a">
+
+                <div id="divapicontainer_aa56681b6093423a85267eda61de2f4a">
+                    <div id="divapi_aa56681b6093423a85267eda61de2f4a">
+                        <script src="https://www.google.com/recaptcha/api.js"></script>
+                    </div>
+                </div>
+
+                <script src="https://partners.4sight.cloud/track/d5vhql2k7toni/gr52o9i4xazl/webpl.js"></script>
+                <script src="https://cache.amp.vg/partners.4sight.cloud/bundles/3812a497290124bd527f170a34b95e1831475fee/en/jquery-updated.js"></script>
+
+                <!-- Hidden Fields -->
+                <input type="hidden" id="token_aa56681b6093423a85267eda61de2f4a" name="tokenkey" value="">
+                <input type="hidden" name="templateid" id="templateid" value="1085">
+                <input type="hidden" name="formid" id="formid" value="1052">
+                <input type="hidden" name="doubleopt" id="doubleopt" value="0">
+                <input type="hidden" name="successurl" id="successurl" value="https://partners.4sight.cloud">
+                <input type="hidden" name="failureurl" id="failureurl" value="https://partners.4sight.cloud">
+
+                <!-- Visible Fields -->
+                <div class="field-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="ampfield" id="FirstName" name="FirstName"
+                           dbfieldid="FirstName" placeholder="Enter your first name">
+                </div>
+
+                <div class="field-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="ampfield" id="LastName" name="LastName"
+                           dbfieldid="LastName" placeholder="Enter your last name">
+                </div>
+
+                <div class="field-group">
+                    <label for="Email">Email</label>
+                    <input type="text" class="ampfield" id="Email" name="Email"
+                           dbfieldid="Email" placeholder="you@company.com">
+                </div>
+
+                <div class="field-group">
+                    <label for="ContactCompany">Company</label>
+                    <input type="text" class="ampfield" id="ContactCompany" name="ContactCompany"
+                           dbfieldid="ContactCompany" placeholder="Your company name">
+                </div>
+
+                <div class="field-group">
+                    <label for="Wheredidyouhearaboutus">Where did you hear about us?</label>
+                    <select class="ampfield" id="Wheredidyouhearaboutus"
+                            name="Wheredidyouhearaboutus" dbfieldid="Wheredidyouhearaboutus">
+                        <option value="">Please select…</option>
+                        <option>Bing</option>
+                        <option>ChatGPT/AI</option>
+                        <option>Email</option>
+                        <option>Google</option>
+                        <option>Social Media</option>
+                        <option>Word of Mouth</option>
+                    </select>
+                </div>
+
+                <!-- CAPTCHA -->
+                <div id="captcha_aa56681b6093423a85267eda61de2f4a" style="display:none;">
+                    <div id="divReCaptchaaa56681b6093423a85267eda61de2f4a"
+                         class="g-recaptcha"
+                         data-sitekey="6LeQHR4UAAAAALnbi_6DE8IEoKMjYnZk3IawV-5t">
+                    </div>
+                    <div id="divInvisibleCaptchaaa56681b6093423a85267eda61de2f4a"
+                         class="g-recaptcha"
+                         data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU"
+                         data-callback="submitForm"
+                         data-size="invisible"
+                         data-bind="submit_aa56681b6093423a85267eda61de2f4a">
+                    </div>
+                </div>
+
+                <!-- Interactive Submit -->
+                <button type="button"
+                        id="submit_aa56681b6093423a85267eda61de2f4a"
+                        class="submit-btn g-recaptcha"
+                        data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU">
+                    Submit
+                </button>
+
+            </div>
+
+            <script src="https://partners.4sight.cloud/public/externalform2.ashx?formKey=aa56681b6093423a85267eda61de2f4a"
+                    async defer></script>
+        </form>
+
+        <!-- ===== Success Confirmation Panel ===== -->
+        <div class="success-panel" id="successPanel_aa56681b6093423a85267eda61de2f4a">
+            <div class="check-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="3"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2>Thank you!</h2>
+            <p>Your details have been submitted successfully.<br>Our team will be in touch with you soon.</p>
+        </div>
+
+        <div class="form-footer">© 4Sight Holdings Limited</div>
+
     </div>
+</div>
 
-    <script src="https://partners.4sight.cloud/track/d5vhql2k7toni/gr52o9i4xazl/webpl.js"></script>
+<!-- ===== Scripts ===== -->
+<script>
+    function submitForm() {
+        document.getElementById("form_aa56681b6093423a85267eda61de2f4a").submit();
+    }
 
-    <script>
-        function submitForm() {
-            document.getElementById("form_aa56681b6093423a85267eda61de2f4a").submit();
-        }
+    function validateform() {
+        return true;
+    }
 
-        function validateform() {
-            return true;
-        }
-    </script>
+    /* Show an on-page confirmation the moment the form is submitted,
+       so the user always gets clear feedback (works even inside an iframe). */
+    (function () {
+        var form   = document.getElementById("form_aa56681b6093423a85267eda61de2f4a");
+        var body   = document.getElementById("formBody_aa56681b6093423a85267eda61de2f4a");
+        var footer = null;
+        var panel  = document.getElementById("successPanel_aa56681b6093423a85267eda61de2f4a");
+        var header = document.querySelector(".form-header");
 
-    <script src="https://cache.amp.vg/partners.4sight.cloud/bundles/3812a497290124bd527f170a34b95e1831475fee/en/jquery-updated.js"></script>
-
-    <!-- Hidden Fields -->
-    <input type="hidden" id="token_aa56681b6093423a85267eda61de2f4a" name="tokenkey" value="">
-    <input type="hidden" name="templateid" id="templateid" value="1085">
-    <input type="hidden" name="formid" id="formid" value="1052">
-    <input type="hidden" name="doubleopt" id="doubleopt" value="0">
-    <input type="hidden" name="successurl" id="successurl" value="https://partners.4sight.cloud">
-    <input type="hidden" name="failureurl" id="failureurl" value="https://partners.4sight.cloud">
-
-    <!-- CAPTCHA -->
-    <div id="captcha_aa56681b6093423a85267eda61de2f4a" style="display:none;">
-
-        <div id="divReCaptchaaa56681b6093423a85267eda61de2f4a"
-             class="g-recaptcha"
-             data-sitekey="6LeQHR4UAAAAALnbi_6DE8IEoKMjYnZk3IawV-5t">
-        </div>
-
-        <div id="divInvisibleCaptchaaa56681b6093423a85267eda61de2f4a"
-             class="g-recaptcha"
-             data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU"
-             data-callback="submitForm"
-             data-size="invisible"
-             data-bind="submit_aa56681b6093423a85267eda61de2f4a">
-        </div>
-
-    </div>
-
-    <!-- Form -->
-    <table style="width:100px; height:100px;">
-
-        <tr>
-            <td>First Name</td>
-            <td>
-                <input type="text"
-                       class="ampfield"
-                       id="FirstName"
-                       name="FirstName"
-                       dbfieldid="FirstName">
-            </td>
-        </tr>
-
-        <tr>
-            <td>Last Name</td>
-            <td>
-                <input type="text"
-                       class="ampfield"
-                       id="LastName"
-                       name="LastName"
-                       dbfieldid="LastName">
-            </td>
-        </tr>
-
-        <tr>
-            <td>Email</td>
-            <td>
-                <input type="text"
-                       class="ampfield"
-                       id="Email"
-                       name="Email"
-                       dbfieldid="Email">
-            </td>
-        </tr>
-
-        <tr>
-            <td>Company</td>
-            <td>
-                <input type="text"
-                       class="ampfield"
-                       id="ContactCompany"
-                       name="ContactCompany"
-                       dbfieldid="ContactCompany">
-            </td>
-        </tr>
-
-        <tr>
-            <td>Where did you hear about us?</td>
-            <td>
-                <select class="ampfield"
-                        id="Wheredidyouhearaboutus"
-                        name="Wheredidyouhearaboutus"
-                        dbfieldid="Wheredidyouhearaboutus">
-
-                    <option value="">Where did you hear about us?</option>
-                    <option>Bing</option>
-                    <option>ChatGPT/AI</option>
-                    <option>Email</option>
-                    <option>Google</option>
-                    <option>Social Media</option>
-                    <option>Word of Mouth</option>
-
-                </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <input type="button"
-                       id="submit_aa56681b6093423a85267eda61de2f4a"
-                       value="Submit"
-                       class="g-recaptcha"
-                       data-sitekey="6LdTHh4UAAAAAHXtAKkvkcSmd-Zm_qdKgPUjMVsU">
-            </td>
-        </tr>
-
-    </table>
-
-    <script src="https://partners.4sight.cloud/public/externalform2.ashx?formKey=aa56681b6093423a85267eda61de2f4a"
-            async
-            defer>
-    </script>
-
-</form>
+        form.addEventListener("submit", function () {
+            // Hide the input fields, reveal the thank-you message.
+            if (body)   body.style.display   = "none";
+            if (panel)  panel.style.display   = "block";
+            if (header) {
+                header.querySelector("h1").textContent = "Submission received";
+                header.querySelector("p").textContent  = "Thanks for reaching out to 4Sight.";
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
